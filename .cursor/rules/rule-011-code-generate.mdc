@@ -1,0 +1,30 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Guidelines for Optimal Code Generation in Cursor
+
+## Code Quality and Architecture
+
+1. Require modular, single-responsibility functions and classes that perform one task well
+2. Follow SOLID principles (Single responsibility, Open-closed, Liskov substitution, Interface segregation, Dependency inversion)
+3. Enforce consistent code style using established standards for each language
+4. Implement proper error handling with specific error types and meaningful messages
+5. Avoid deeply nested code blocks (maximum nesting depth of 3-4 levels)
+
+## Documentation and Readability
+
+1. Require meaningful variable and function names that clearly indicate purpose
+2. Include descriptive docstrings/comments for functions, classes, and complex logic
+3. Document function parameters, return values, exceptions, and side effects
+4. Comment on non-obvious implementation decisions and algorithm complexity
+5. Maintain a consistent documentation style within projects
+
+## Testing Requirements
+
+1. Generate unit tests alongside implementation code
+2. Include edge case handling in tests (null values, boundary conditions)
+3. Mock external dependencies appropriately in tests
+4. Ensure test coverage for critical code paths
+5. Separate test fixtures and helper functions from test cases

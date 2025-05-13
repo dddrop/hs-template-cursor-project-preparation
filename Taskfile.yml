@@ -1,0 +1,26 @@
+version: '3'
+
+tasks:
+  clone-template-repo:
+    desc: "Clone the contents of the specified repository into the current directory, without .git folder"
+    vars:
+      REPO_URL: '{{.REPO_URL}}'
+    cmds:
+      - |
+        if [ -z "{{.REPO_URL}}" ]; then
+          echo "Error: REPO_URL is not set. Please provide --REPO_URL=..." >&2
+          exit 1
+        fi
+      - rm -rf /tmp/repo-tmp
+      - git clone {{.REPO_URL}} /tmp/repo-tmp
+      - rm -rf /tmp/repo-tmp/.git
+      - rm -rf /tmp/repo-tmp/Taskfile.yml
+      - cp -r /tmp/repo-tmp/. .
+      - rm -rf /tmp/repo-tmp
+
+  clone-all:
+    desc: "Clone the base template"
+    cmds:
+      - task clone-template-repo REPO_URL=https://github.com/dddrop/hs-template-cursor-rule-011-code-generate.git
+      - task clone-template-repo REPO_URL=https://github.com/dddrop/hs-template-cursor-rule-101-git.git
+      - task clone-template-repo REPO_URL=https://github.com/dddrop/hs-template-cursor-rule-201-conversation.git
